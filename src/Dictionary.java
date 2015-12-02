@@ -19,7 +19,7 @@ public class Dictionary {
 
     private static Dictionary instance = null;
 
-    private String path;
+    private String name;
     private int size;
     private Mat centers;
 
@@ -91,7 +91,7 @@ public class Dictionary {
 
 
     protected List<Mat> getCodewordsOneRest(final File restFolder) {
-        this.path = restFolder.getPath();
+        this.name = restFolder.getName();
         List<Mat> codewordsList = new ArrayList<Mat>();
         for (final File foodFolder : restFolder.listFiles()) {
             if (foodFolder.isDirectory()) {
@@ -127,7 +127,7 @@ public class Dictionary {
         // save centers to dictionary
         this.centers = kmeansCenter;
         // seperate labels for each image and calculate bag of surfs
-        System.out.println("Calculate bag of surfs");
+        System.out.println("Calculating bag of surfs");
         int start;
         int end = 0;
         for (Imagefeat imagefeat : imagefeatList) {
@@ -141,24 +141,24 @@ public class Dictionary {
         }
     }
 
-    public void saveCenters() {
-        String filename = path + "/dict" + size + "centers.txt";
+    public void saveCenters(String path) {
+        String filename = path + name + size + "Centers.txt";
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.print(getCenters().dump());
+            writer.flush();
             writer.close();
         } catch (FileNotFoundException e) {
             throw new FileSystemNotFoundException("fail to write to " + filename);
         }
     }
 
-    public void saveToDatabase() {
-        String filename = path + "/dict" + size + "datas.csv";
+    public void saveToDatabase(String path) {
+        String filename = path + name + size + "Datas.csv";
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.println("FoodImage,NumOffeats,BagOfSurf,FoodId\n");
             for (Imagefeat imagefeat : imagefeatList) {
-                System.out.println(imagefeat.getImgName());
                 writer.println(imagefeat.toString());
                 writer.flush();
             }
