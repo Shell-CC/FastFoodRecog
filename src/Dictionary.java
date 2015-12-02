@@ -4,6 +4,8 @@ import org.opencv.core.TermCriteria;
 import org.opencv.highgui.Highgui;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,18 +19,13 @@ public class Dictionary {
 
     private static Dictionary instance = null;
 
+    private String path;
     private int size;
     private Mat centers;
-    private List<Mat> labelsList;
 
-    private List<Imagefeat> imagefeatList;
-
-    public List<Mat> getLabelsList() {
-        return labelsList;
-    }
+    public List<Imagefeat> imagefeatList;
 
     public Mat getCenters() {
-        System.out.println(centers.size());
         return centers;
     }
 
@@ -38,9 +35,10 @@ public class Dictionary {
     protected Dictionary(int size, final File folder) {
         this.size = size;
         this.imagefeatList = new ArrayList<Imagefeat>();
+        // get codewords of all images
         getCodewordsOneRest(folder);
+        // cluster into k and calculate bag of
         clusterCodewords(size);
-//        BagOfSurf hist = new BagOfSurf(size, labels, 0, labels.rows()-1);
     }
 
 
@@ -93,6 +91,7 @@ public class Dictionary {
 
 
     protected List<Mat> getCodewordsOneRest(final File restFolder) {
+        this.path = restFolder.getPath();
         List<Mat> codewordsList = new ArrayList<Mat>();
         for (final File foodFolder : restFolder.listFiles()) {
             if (foodFolder.isDirectory()) {
@@ -114,6 +113,7 @@ public class Dictionary {
      * @return Labels(cluster number) of the input list of images.
      */
     protected void clusterCodewords(int k) {
+        System.out.println("Clustering....");
         // merge all codewords into one mat
         Mat codewordsAll = new Mat();
         List<Mat> codewordsList = new ArrayList<Mat>(imagefeatList.size());
@@ -126,24 +126,53 @@ public class Dictionary {
         Core.kmeans(codewordsAll, k, labelsAll, termCriteria, 3, Core.KMEANS_RANDOM_CENTERS, kmeansCenter);
         // save centers to dictionary
         this.centers = kmeansCenter;
-        // seperate labels for each image and save to dictionary
-        labelsList = new ArrayList<Mat>(codewordsList.size());
+        // seperate labels for each image and calculate bag of surfs
+        System.out.println("Calculate bag of surfs");
         int start;
         int end = 0;
-        for (Mat m : codewordsList) {
+        for (Imagefeat imagefeat : imagefeatList) {
             start = end;
-            end = end + m.rows();
-            labelsList.add(labelsAll.rowRange(start, end));
-            assert m.size() == labelsList.get(labelsList.size()-1).size();
+            end = end + imagefeat.getSurfs().rows();
+            Mat labels = labelsAll.rowRange(start, end);
+            BagOfSurf bagOfSurf = new BagOfSurf(size, labels);
+
+            // save bag of surfs and add it to list
+            imagefeat.setBagOfSurf(bagOfSurf);
         }
-        assert labelsList.size() == codewordsList.size();
+    }
+
+    public void saveCenters() {
+        String filename = path + "/dict" + size + "centers.txt";
+        try {
+            PrintWriter writer = new PrintWriter(filename);
+            writer.print(getCenters().dump());
+            writer.close();
+        } catch (FileNotFoundException e) {
+            throw new FileSystemNotFoundException("fail to write to " + filename);
+        }
+    }
+
+    public void saveToDatabase() {
+        String filename = path + "/dict" + size + "datas.csv";
+        try {
+            PrintWriter writer = new PrintWriter(filename);
+            writer.println("FoodImage,NumOffeats,BagOfSurf,FoodId\n");
+            for (Imagefeat imagefeat : imagefeatList) {
+                System.out.println(imagefeat.getImgName());
+                writer.println(imagefeat.toString());
+                writer.flush();
+            }
+            writer.close();
+        } catch (FileNotFoundException e) {
+            throw new FileSystemNotFoundException("fail to write to " + filename);
+        }
     }
 }
 
 class Imagefeat {
     private String imgName;
     private Mat surfs;
-    private Mat surfLabels;
+    private BagOfSurf bagOfSurf;
     private int foodId;
 
     public String getImgName() {
@@ -164,15 +193,6 @@ class Imagefeat {
         return this;
     }
 
-    public Mat getSurfLabels() {
-        return surfLabels;
-    }
-
-    public Imagefeat setSurfLabels(Mat surfLabels) {
-        this.surfLabels = surfLabels;
-        return this;
-    }
-
     public int getFoodId() {
         return foodId;
     }
@@ -180,5 +200,20 @@ class Imagefeat {
     public Imagefeat setFoodId(int foodId) {
         this.foodId = foodId;
         return this;
+    }
+
+    public BagOfSurf getBagOfSurf() {
+        return bagOfSurf;
+    }
+
+    public Imagefeat setBagOfSurf(BagOfSurf bagOfSurf) {
+        this.bagOfSurf = bagOfSurf;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return imgName + "," + surfs.rows() + ","
+                + bagOfSurf.toString() + "," + foodId;
     }
 }
