@@ -157,7 +157,7 @@ public class Dictionary {
         String filename = path + name + size + "Datas.csv";
         try {
             PrintWriter writer = new PrintWriter(filename);
-            writer.println("FoodImage,NumOffeats,BagOfSurf,FoodId\n");
+            writer.println("FoodImage,NumOffeats,BagOfSurf,FoodId");
             for (Imagefeat imagefeat : imagefeatList) {
                 writer.println(imagefeat.toString());
                 writer.flush();

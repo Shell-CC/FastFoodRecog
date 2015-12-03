@@ -1,3 +1,5 @@
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
 import java.util.ArrayList;
@@ -11,6 +13,11 @@ public class BagOfSurf {
 
     private int numOfFeats;
     private List<Double> hist;
+
+
+    public int size() {
+        return hist.size();
+    }
 
 
     /**
@@ -52,6 +59,20 @@ public class BagOfSurf {
         this(size, labels, 0, labels.rows());
     }
 
+
+    public BagOfSurf(int numOfFeats, String strBagOfSurf) {
+        if (strBagOfSurf.startsWith("BagOfSurf{") && strBagOfSurf.endsWith("}")) {
+            String[] sub = strBagOfSurf.substring(10, strBagOfSurf.length()-1).split(";");
+            this.numOfFeats = numOfFeats;
+            this.hist = new ArrayList<Double>(sub.length);
+            for (String s : sub) {
+                hist.add(Double.parseDouble(s));
+            }
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public List<Double> getHist() {
         return hist;
     }
@@ -67,5 +88,15 @@ public class BagOfSurf {
         }
         builder.append('}');
         return builder.toString();
+    }
+
+
+    public Mat toMat() {
+        Mat mat = new Mat(1, hist.size(), CvType.CV_32FC1);
+        for (int i = 0; i < hist.size(); i++) {
+            float[] count = new float[]{hist.get(i).floatValue()};
+            mat.put(0, i, hist.get(i));
+        }
+        return mat;
     }
 }
