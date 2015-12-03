@@ -3,9 +3,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.TermCriteria;
 import org.opencv.highgui.Highgui;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +57,7 @@ public class Dictionary {
      * Get all surf descriptors of all images in one instance.
      * @param instFolder The instance folder.
      */
-    protected void getCodewordsOneInst(final File instFolder, int foodId) {
+    protected void getCodewordsOneInst(final File instFolder, int foodId) throws IOException{
 
         // Get background image first
         Mat background = new Mat();
@@ -69,14 +67,15 @@ public class Dictionary {
             }
         }
         if (background.total() == 0) {
-            throw new FileSystemNotFoundException("Cannot find background image");
+            throw new FileNotFoundException("Cannot find background image");
         }
 
         // extract surfs for each image and add to the list
         for (final File file : instFolder.listFiles()) {
             String filename = file.getPath();
             if (filename.endsWith(".jpg") && !filename.endsWith("back.jpg")) {
-                FoodImage image = new FoodImage(filename);
+                FoodImage image = new FoodImage();
+                image.read(filename);
                 Mat mask = image.extractBackgroundMask(background);
                 Mat surf = image.extractSurf(mask);
                 System.out.println("Extracted " + surf.rows() + " SURFs for " + filename);
@@ -98,7 +97,11 @@ public class Dictionary {
                 int foodId = Integer.parseInt(foodFolder.getName());
                 for (final File instFolder : foodFolder.listFiles()) {
                     if (instFolder.isDirectory()) {
-                        getCodewordsOneInst(instFolder, foodId);
+                        try {
+                            getCodewordsOneInst(instFolder, foodId);
+                        } catch (IOException e) {
+                            System.out.println("Bad instance: " + instFolder.getPath());
+                        }
                     }
                 }
             }
@@ -142,10 +145,10 @@ public class Dictionary {
     }
 
     public void saveCenters(String path) {
-        String filename = path + name + size + "Centers.txt";
+        String filename = path + name + size + "Centers.csv";
         try {
             PrintWriter writer = new PrintWriter(filename);
-            writer.print(getCenters().dump());
+            writer.print(centers.dump());
             writer.flush();
             writer.close();
         } catch (FileNotFoundException e) {

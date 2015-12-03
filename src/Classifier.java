@@ -34,8 +34,6 @@ public class Classifier {
             trainLabelMat.put(i, 0, trainLabelList.get(i).doubleValue());
         }
         svm.train_auto(trainDataMat, trainLabelMat, new Mat(), new Mat(), params);
-        System.out.println(svm.get_var_count());
-        System.out.println(svm.get_support_vector_count());
     }
 
     public int predict(Mat testData) {
@@ -61,4 +59,11 @@ public class Classifier {
         return predictLabelList;
     }
 
+    public void save(String filename) {
+        svm.save(filename);
+    }
+
+    public void load(String filename) {
+        svm.load(filename);
+    }
 }

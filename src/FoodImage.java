@@ -5,31 +5,66 @@ import org.opencv.features2d.Features2d;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
-import java.nio.file.FileSystemAlreadyExistsException;
-import java.nio.file.FileSystemNotFoundException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by Shawn on 11/25/15.
+ * Food image info.
  */
 
 public class FoodImage {
 
     private Mat image;
 
+    private Mat backgroundMask;
+    private MatOfKeyPoint features;
+
+    /**
+     * Empty constructor.
+     */
     public FoodImage() {
-        image = new Mat();
+        this(new Mat());
     }
 
-    public FoodImage(String filename) {
+    /**
+     * Construct food image from an OpenCV mat(org.opencv.*).
+     * @param image Image in OpenCV MAT format.
+     */
+    public FoodImage(Mat image) {
+        this.image = image;
+        this.features = new MatOfKeyPoint();
+    }
+
+    /**
+     * Check if the image is empty.
+     * @return True if the image empty.
+     */
+    public boolean isEmpty() {
+        return image.total() == 0;
+    }
+
+    /**
+     * Read image from file.
+     * @param filename Path name of the file.
+     * @throws IOException If file path is wrong or image format is not supported.
+     */
+    public void read(String filename) throws IOException{
         image = Highgui.imread(filename);
         if (image.total() == 0) {
-            throw new FileSystemNotFoundException("Cannot find " + filename);
+            throw new FileNotFoundException(filename);
         }
     }
 
-    public void write(String filename) {
+
+    /**
+     * Write the image to the file.
+     * @param filename File path to be written.
+     * @throws Exception If image format is not supported.
+     */
+    public void write(String filename) throws Exception{
         if (!Highgui.imwrite(filename, image)) {
-            throw new FileSystemAlreadyExistsException(filename);
+            throw new InvalidImageFormatException(filename);
         }
     }
 
@@ -59,6 +94,7 @@ public class FoodImage {
 //        Mat foreground = new Mat();
 //        image.copyTo(foreground, diff);
 //        Highgui.imwrite("./res/mask.png", diff);
+        this.backgroundMask = diff;
         return diff;
     }
 
@@ -76,12 +112,12 @@ public class FoodImage {
 //        Mat foreground = new Mat();
 //        image.copyTo(foreground, diff);
 //        Highgui.imwrite("./res/trainWithMask.png", foreground);
+        this.backgroundMask = diff;
         return diff;
     }
 
 
     public Mat extractSurf(Mat mask) {
-        MatOfKeyPoint features = new MatOfKeyPoint();
         Mat descriptor = new Mat();
 
         FeatureDetector detector = FeatureDetector.create(FeatureDetector.SURF);
@@ -104,10 +140,41 @@ public class FoodImage {
         return extractSurf(new Mat());
     }
 
-    private void drawFeatures(MatOfKeyPoint features) {
-        Mat imageWithFeatures = new Mat();
-        Features2d.drawKeypoints(image, features, imageWithFeatures);
-        Highgui.imwrite("./res/KeyPoint.png", imageWithFeatures);
+    public void drawFeatures(String filename) throws Exception {
+        if (features.total() != 0) {
+            Mat imageWithFeatures = new Mat();
+            Features2d.drawKeypoints(image, features, imageWithFeatures);
+            if (!Highgui.imwrite(filename, imageWithFeatures)) {
+                throw new InvalidImageFormatException(filename);
+            }
+        } else {
+            throw new EmptyContentException("features");
+        }
     }
 
+
+    public void drawBackground(String filename) throws Exception {
+        if (features.total() != 0) {
+            Mat imageWithMask = new Mat();
+            image.copyTo(imageWithMask, backgroundMask);
+            if (!Highgui.imwrite(filename, imageWithMask)) {
+                throw new InvalidImageFormatException(filename);
+            }
+        } else {
+            throw new EmptyContentException("background");
+        }
+    }
+
+
+    class EmptyContentException extends Exception {
+        public EmptyContentException(String message) {
+            super(message);
+        }
+    }
+}
+
+class InvalidImageFormatException extends IOException {
+    public InvalidImageFormatException(String message) {
+        super(message);
+    }
 }

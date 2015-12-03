@@ -1,5 +1,4 @@
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
 import java.io.BufferedReader;
@@ -11,15 +10,15 @@ import java.util.List;
 
 
 public class Train {
-    static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
 
-    private static final String outDataPath = "./out/data/";
-    private static final String inDataPath = "/Users/Shawn/Google Drive/ECEN642/642 Final Proj/Datasets/new_data/";
+    public static final String outDataPath = "./out/data/";
+    public static final String inDataPath = "/Users/Shawn/Google Drive/ECEN642/642 Final Proj/Datasets/new_data/";
 
     static public void main(String[] args) throws IOException{
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.out.println("Hello OpenCV " + Core.VERSION);
+
+        getTrainData();
 
         List<Mat> traindataList = new ArrayList<Mat>();
         List<Integer> trainLabelList = new ArrayList<Integer>();
@@ -28,12 +27,14 @@ public class Train {
         Classifier classifier = new Classifier();
         classifier.train(traindataList, trainLabelList);
         classifier.test(traindataList, trainLabelList);
+        classifier.save(outDataPath + "svm.xml");
     }
 
     public static void getTrainData() {
         // Build SURF dictionary
 
-        File folder = new File(inDataPath + "Arbys/");
+        File folder = new File(inDataPath + "Arbys");
+        System.out.println(folder.getPath());
         Dictionary dictionary = Dictionary.build(100, folder);
         dictionary.saveCenters(outDataPath);
         dictionary.saveToDatabase(outDataPath);
@@ -56,4 +57,5 @@ public class Train {
             reader.close();
         }
     }
+
 }
