@@ -145,7 +145,7 @@ public class Dictionary {
     }
 
     public void saveCenters(String path) {
-        String filename = path + name + size + "Centers.csv";
+        String filename = path + name + size + "Centers.txt";
         try {
             PrintWriter writer = new PrintWriter(filename);
             writer.print(centers.dump());
@@ -169,6 +169,23 @@ public class Dictionary {
         } catch (FileNotFoundException e) {
             throw new FileSystemNotFoundException("fail to write to " + filename);
         }
+    }
+
+    public static Dictionary load(String filename) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+        String line = "";
+        while ((line = bufferedReader.readLine()) != null) {
+            String[] row;
+            if (line.startsWith("[")) {
+                row = line.substring(1, line.length()-1).split(",");
+            } else {
+                row = line.substring(0, line.length()-1).split(",");
+            }
+            for (String d : row) {
+                System.out.println(Double.parseDouble(d));
+            }
+        }
+        return instance;
     }
 }
 

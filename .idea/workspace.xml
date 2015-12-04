@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f4035965-6ceb-476d-bafb-c9d5100389e7" name="Default" comment="save SVM to file">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Test.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/data/Arbys100Centers.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Classifier.java" afterPath="$PROJECT_DIR$/src/Classifier.java" />
+    <list default="true" id="f4035965-6ceb-476d-bafb-c9d5100389e7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FastFoodRecog/Classifier.class" afterPath="$PROJECT_DIR$/out/production/FastFoodRecog/Classifier.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FastFoodRecog/Dictionary.class" afterPath="$PROJECT_DIR$/out/production/FastFoodRecog/Dictionary.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FastFoodRecog/FoodImage.class" afterPath="$PROJECT_DIR$/out/production/FastFoodRecog/FoodImage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FastFoodRecog/Imagefeat.class" afterPath="$PROJECT_DIR$/out/production/FastFoodRecog/Imagefeat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/FastFoodRecog/Train.class" afterPath="$PROJECT_DIR$/out/production/FastFoodRecog/Train.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Dictionary.java" afterPath="$PROJECT_DIR$/src/Dictionary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FoodImage.java" afterPath="$PROJECT_DIR$/src/FoodImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Train.java" afterPath="$PROJECT_DIR$/src/Train.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test.java" afterPath="$PROJECT_DIR$/src/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FastFoodRecog.iws" />
@@ -34,23 +35,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Dictionary.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Dictionary.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dictionary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6112185" vertical-offset="2160" max-vertical-offset="3405">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.4814816" vertical-offset="2393" max-vertical-offset="3660">
+              <caret line="173" column="70" selection-start-line="173" selection-start-column="70" selection-end-line="173" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#558#559#0" expanded="true" />
                 <element signature="e#588#589#0" expanded="true" />
-                <element signature="e#6215#6216#0" expanded="true" />
-                <element signature="e#6245#6246#0" expanded="true" />
-                <element signature="e#6384#6385#0" expanded="true" />
-                <element signature="e#6412#6413#0" expanded="true" />
-                <element signature="e#6541#6542#0" expanded="true" />
-                <element signature="e#6570#6571#0" expanded="true" />
-                <element signature="e#6712#6713#0" expanded="true" />
-                <element signature="e#6744#6745#0" expanded="true" />
+                <element signature="e#6848#6849#0" expanded="true" />
+                <element signature="e#6878#6879#0" expanded="true" />
+                <element signature="e#7017#7018#0" expanded="true" />
+                <element signature="e#7045#7046#0" expanded="true" />
+                <element signature="e#7174#7175#0" expanded="true" />
+                <element signature="e#7203#7204#0" expanded="true" />
+                <element signature="e#7345#7346#0" expanded="true" />
+                <element signature="e#7377#7378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Train.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Train.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5514706" vertical-offset="105" max-vertical-offset="1005">
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#727#736#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,7 +73,7 @@
       <file leaf-file-name="Classifier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Classifier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="1095">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095">
               <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -73,35 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Train.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Train.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#727#736#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="570">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FoodImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FoodImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2790">
+            <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="2790">
               <caret line="96" column="35" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -115,6 +104,18 @@
                 <element signature="e#5606#5607#0" expanded="true" />
                 <element signature="e#5728#5729#0" expanded="true" />
                 <element signature="e#5758#5759#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="630">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -510,7 +511,7 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Train">
+  <component name="RunManager" selected="Application.Test">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -748,9 +749,9 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="false" name="Train" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration default="false" name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="Train" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
       <option name="VM_PARAMETERS" value="-Djava.library.path=$PROJECT_DIR$/../../opencv/build/lib" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -766,7 +767,7 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.Train" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Test" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -782,12 +783,19 @@
       <workItem from="1449019784862" duration="47000" />
       <workItem from="1449020032264" duration="186000" />
       <workItem from="1449020356876" duration="703000" />
-      <workItem from="1449021477073" duration="51848000" />
+      <workItem from="1449021477073" duration="57789000" />
     </task>
+    <task id="LOCAL-00001" summary="save SVM to file">
+      <created>1449183195714</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1449183195714</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52784000" />
+    <option name="totallyTimeSpent" value="58725000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="512" y="0" width="928" height="900" extended-state="0" />
@@ -807,14 +815,14 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32942554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30495688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32942554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -937,6 +945,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/data/svm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.46875" vertical-offset="55631" max-vertical-offset="76155">
+          <caret line="3762" column="24" selection-start-line="3762" selection-start-column="24" selection-end-line="3762" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/FoodImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1226" max-vertical-offset="2790">
@@ -957,11 +973,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/data/svm.xml">
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.46875" vertical-offset="55631" max-vertical-offset="76155">
-          <caret line="3762" column="24" selection-start-line="3762" selection-start-column="24" selection-end-line="3762" selection-end-column="24" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="56" max-vertical-offset="630">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -980,43 +998,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/Dictionary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="570">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.4814816" vertical-offset="2393" max-vertical-offset="3660">
+          <caret line="173" column="70" selection-start-line="173" selection-start-column="70" selection-end-line="173" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#6848#6849#0" expanded="true" />
+            <element signature="e#6878#6879#0" expanded="true" />
+            <element signature="e#7017#7018#0" expanded="true" />
+            <element signature="e#7045#7046#0" expanded="true" />
+            <element signature="e#7174#7175#0" expanded="true" />
+            <element signature="e#7203#7204#0" expanded="true" />
+            <element signature="e#7345#7346#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Train.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5514706" vertical-offset="105" max-vertical-offset="1005">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#727#736#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dictionary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6112185" vertical-offset="2160" max-vertical-offset="3405">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#558#559#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#6215#6216#0" expanded="true" />
-            <element signature="e#6245#6246#0" expanded="true" />
-            <element signature="e#6384#6385#0" expanded="true" />
-            <element signature="e#6412#6413#0" expanded="true" />
-            <element signature="e#6541#6542#0" expanded="true" />
-            <element signature="e#6570#6571#0" expanded="true" />
-            <element signature="e#6712#6713#0" expanded="true" />
-            <element signature="e#6744#6745#0" expanded="true" />
           </folding>
         </state>
       </provider>

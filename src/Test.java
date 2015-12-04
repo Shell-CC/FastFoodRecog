@@ -25,6 +25,10 @@ public class Test {
         classifier.load(Train.outDataPath + "svm.xml");
 
         // extract bag of surf
+        Dictionary dictionary = Dictionary.load(
+                Train.outDataPath + "Arbys100Centers.txt");
+
+
 
 //        int l = classifier.predict()
     }
